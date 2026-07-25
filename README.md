@@ -59,5 +59,5 @@ We may update our Privacy Policy from time to time to maintain compliance with u
 
 If you have any questions or suggestions about our Privacy Policy or APS SCANNER, please feel free to contact us at:
 
-- **Developer / Support Email:** `alibekplus@gmail.com` *
-- **GitHub Repository:** [aps-scanner-privacy-Policy](https://github.com/)
+- **Developer / Support Email:** alibekplus@gmail.com
+- **GitHub Repository:** [aps-scanner-privacy-Policy](https://github.com/foxteamcode-ops/aps-scanner-privacy-Policy)
