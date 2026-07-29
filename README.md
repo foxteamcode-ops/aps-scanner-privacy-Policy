@@ -1,160 +1,293 @@
 # Privacy Policy for APS SCANNER
 
-**Effective Date:** July 29, 2026
-**Last Updated:** July 29, 2026
+**Effective Date:** July 29, 2026  
+**Last Updated:** July 29, 2026  
 **App Version:** 1.0.3
 
 ---
 
-## 1. Introduction
+# 1. Introduction
 
-Welcome to **APS SCANNER** ("the App", "we", "us", "our").
+Welcome to **APS SCANNER** ("the App", "we", "us", or "our").
 
-This Privacy Policy describes how APS SCANNER handles your data. We built this app with a privacy-first philosophy: your scanned content, generated QR codes, and scan history stay on your device and are never uploaded to our servers — **because we have no servers**.
+APS SCANNER is designed with a **privacy-first** approach. All scanning, QR code generation, OCR recognition, and history management are performed locally on your device.
 
-However, the App does use third-party libraries that may communicate with external services. This policy is fully transparent about what happens on your device and what goes over the network.
+We do **not** operate any servers, and we do **not** collect, transmit, or store your personal information.
+
+This Privacy Policy explains what information the App stores locally, how it uses Android permissions, and how third-party libraries function.
 
 ---
 
-## 2. What Data We Collect
+# 2. Information We Collect
 
-### Data We Collect Directly: **None**
+## Personal Data
 
-APS SCANNER does **not** collect, transmit, or store on any external server:
+APS SCANNER does **not** collect, store, or transmit:
 
-- Your name, email, phone number, or any personal identifiers
-- Device identifiers (Android ID, IMEI, Advertising ID)
+- Name
+- Email address
+- Phone number
+- Home address
+- Device identifiers
+- Android ID
+- Advertising ID
+- IMEI
 - Location data
-- Camera images or video recordings
-- Contents of scanned QR codes or barcodes
-- OCR-recognized text
-- Generated QR code designs
-- Scan history records
-- Usage analytics or behavioral data
-
-### Data Stored Locally on Your Device
-
-The App stores the following data **exclusively on your device** within Android's private application sandbox:
-
-| Local Data | Storage Method | Purpose |
-|---|---|---|
-| Scan history (content, type, timestamp) | Room SQLite Database | Lets you review previously scanned codes |
-| App preferences (theme, sound, vibration) | Jetpack DataStore | Remembers your settings |
-| Exported files (PNG, PDF, SVG, CSV) | Device Pictures/Downloads folder | Only created when you explicitly tap "Export" |
-
-You can permanently delete all scan history at any time using **Settings → Clear All History**. Uninstalling the app removes all locally stored data.
+- Contacts
+- Camera photos
+- Videos
+- Scan contents
+- OCR recognized text
+- Generated QR codes
+- Analytics
+- Crash reports
+- Usage statistics
 
 ---
 
-## 3. Third-Party Libraries and Network Activity
+## Data Stored Locally
 
-APS SCANNER does **not** include advertising SDKs, analytics SDKs, or user-tracking frameworks. However, the following third-party components are used:
+The following information is stored **only on your device**.
 
-### 3.1 Google ML Kit (Barcode Scanning & Text Recognition)
+| Data | Storage |
+|------|---------|
+| Scan history | Room Database |
+| User settings | Jetpack DataStore |
+| Theme preferences | Jetpack DataStore |
+| Automation settings | Jetpack DataStore |
+| Security settings | Jetpack DataStore |
+| Generated QR codes | Local storage (only if exported) |
+| Exported PNG/PDF/SVG/CSV files | Device storage |
 
-- **What it does:** Provides on-device barcode scanning and OCR text recognition.
-- **How it works:** ML Kit processes camera frames **entirely on your device** using machine learning models. Scanned content is never sent to Google.
-- **Network activity:** ML Kit is delivered through **Google Play Services**, which may automatically download or update ML models in the background. This download is handled by Google Play Services, not by our App. We have disabled ML Kit's optional diagnostic telemetry (`mlkit.telemetry.disable = true`).
-- **Google's policy:** Google Play Services is governed by [Google's Privacy Policy](https://policies.google.com/privacy). We do not control Google Play Services' own data practices.
+No local data is uploaded to any server.
 
-### 3.2 ZXing Core
+You can delete all stored history at any time through:
 
-- **What it does:** Generates QR code bitmaps and SVG images.
-- **Network activity:** **None.** ZXing operates entirely offline with zero network calls.
+**Settings → Clear All History**
 
-### 3.3 Coil (Image Loading)
-
-- **What it does:** Efficiently loads and displays images within the app UI.
-- **Network activity:** In our app, Coil is used **only for local images** (device gallery photos for logo import). It does not load images from the internet.
-
-### 3.4 AndroidX Libraries (Jetpack)
-
-- Room, DataStore, CameraX, Compose, Lifecycle, Navigation — all operate locally on-device with no network activity.
+Uninstalling APS SCANNER removes all application data stored inside Android's private app storage.
 
 ---
 
-## 4. Android Permissions
+# 3. Third-Party Libraries
 
-| Permission | Why It's Needed | Data Sent Over Network? |
-|---|---|---|
-| `CAMERA` | Real-time QR/barcode scanning via CameraX + ML Kit | **No** — frames processed on-device only |
-| `INTERNET` | Opening scanned web links in your browser; opening the Privacy Policy page | **No user data sent** — only used to launch external browser with a URL you chose to open |
-| `VIBRATE` | Optional haptic feedback when a code is detected | **No** |
-| `WRITE_EXTERNAL_STORAGE` (Android 9 and below only) | Saving exported QR images and CSV files to device storage | **No** |
+APS SCANNER uses several open-source and Google libraries.
 
-### Important Notes on Permissions
+## 3.1 Google ML Kit
 
-- **Camera:** Frames are held in temporary memory during scanning and immediately discarded. No images or video are saved unless you explicitly export a generated QR code.
-- **Internet:** The App itself makes **zero outgoing HTTP requests**. The INTERNET permission exists solely so Android can launch your default browser when you tap "Open" on a scanned URL or "Privacy Policy" in Settings. The App does not fetch, download, or upload any data.
-- **Camera is optional:** The `android.hardware.camera` feature is declared as `required="false"`. The App can function (QR generation, history viewing) without a camera.
+Purpose:
 
----
+- Barcode scanning
+- QR code recognition
+- OCR (Text Recognition)
 
-## 5. Data Sharing
+Processing is performed **entirely on-device**.
 
-We do **not** share your data with any third parties because we do not have access to your data. All processing happens on your device.
+Scanned content is **never uploaded** to Google or to our servers.
 
-The only scenario where data leaves your device is when **you explicitly choose** to:
+Google Play Services may download updated ML models automatically.
 
-- **Open a scanned URL** → Your device's browser opens the link
-- **Share scan results** → Android's share sheet sends the text to an app you select
-- **Export files** → Files are saved to your device's local storage
-
-In each case, you initiate the action and control where the data goes.
+Google's Privacy Policy applies to Google Play Services.
 
 ---
 
-## 6. Data Safety Declaration (Google Play)
+## 3.2 ZXing
+
+Purpose:
+
+- QR code generation
+
+Network activity:
+
+**None**
+
+ZXing works completely offline.
+
+---
+
+## 3.3 AndroidX Libraries
+
+APS SCANNER uses AndroidX libraries including:
+
+- CameraX
+- Room
+- DataStore
+- Lifecycle
+- Navigation
+- Jetpack Compose
+
+These libraries process data locally.
+
+They do not collect or transmit user information.
+
+---
+
+## 3.4 Coil
+
+APS SCANNER uses **Coil** only for displaying images selected by the user.
+
+Network activity:
+
+**None**
+
+Images remain on your device and are never uploaded.
+
+---
+
+# 4. Automatic Features
+
+APS SCANNER includes optional automation features.
+
+Both are **disabled by default**.
+
+| Feature | Default | Description |
+|----------|----------|-------------|
+| Auto Copy | Off | Automatically copies scan results to the clipboard after scanning |
+| Auto Open Links | Off | Automatically opens scanned URLs after security validation |
+
+These features can be enabled or disabled at any time.
+
+---
+
+# 5. Android Permissions
+
+| Permission | Purpose |
+|------------|---------|
+| CAMERA | Scan QR codes and barcodes |
+| INTERNET | Open scanned web links, display the Privacy Policy, and support required libraries |
+| VIBRATE | Optional vibration feedback |
+| WRITE_EXTERNAL_STORAGE (Android 9 and below only) | Export images and files |
+
+### Camera
+
+Camera frames are processed in memory only.
+
+No photos or videos are saved.
+
+---
+
+### Internet
+
+APS SCANNER does **not** send scan results or personal information to any server.
+
+The INTERNET permission is used only for:
+
+- Opening links
+- Displaying the Privacy Policy
+- Supporting required libraries
+
+---
+
+### Camera Requirement
+
+Camera hardware is **optional**.
+
+APS SCANNER declares:
+
+```
+android.hardware.camera
+required="false"
+```
+
+The application can still generate QR codes and manage history without a camera.
+
+---
+
+# 6. Data Sharing
+
+APS SCANNER does **not** share your data with any third party.
+
+Data leaves your device only when **you choose to do so**.
+
+Examples include:
+
+- Opening a scanned website
+- Sharing scan results through Android Share
+- Copying data to the clipboard
+- Exporting files
+
+APS SCANNER never uploads your data.
+
+---
+
+# 7. Google Play Data Safety
 
 | Category | Declaration |
-|---|---|
-| **Data collected** | No user data collected |
-| **Data shared with third parties** | No data shared |
-| **Data encrypted in transit** | Not applicable (no data transmitted by the App) |
-| **Data deletion** | Users can delete all local data via Settings → Clear All History |
-| **Advertising or marketing** | No ads, no ad SDKs |
-| **Analytics or tracking** | No analytics SDKs; ML Kit telemetry disabled |
+|-----------|-------------|
+| Data collected | None |
+| Personal information | Not collected |
+| Location | Not collected |
+| Financial information | Not collected |
+| Contacts | Not collected |
+| Photos | Not collected |
+| Files | Not collected |
+| Device IDs | Not collected |
+| Analytics | No |
+| Crash reporting | No |
+| Advertising | No |
+| Third-party advertising SDKs | None |
+| Data sharing | None |
+| Data deletion | Available inside the app |
 
-> **Disclosure:** Google Play Services (required for ML Kit) operates independently and is governed by Google's own privacy policy. Google Play Services may collect device diagnostics, crash reports, or performance data as part of its normal operation. This is outside the App's control. For details, see [Google's Privacy Policy](https://policies.google.com/privacy).
-
----
-
-## 7. Cloud Backup
-
-APS SCANNER has **disabled Android Auto Backup** (`android:allowBackup="false"`). Your scan history and app preferences are **not** backed up to Google Drive or any cloud service. The Room database and DataStore files are explicitly excluded from both cloud backup and device-to-device transfer backup rules.
-
----
-
-## 8. Security Measures
-
-- **Application Sandbox:** All local data is isolated within Android's per-app security sandbox.
-- **Device Encryption:** Data at rest is protected by your device's built-in encryption (if enabled).
-- **URL Safety Checks:** The App includes a built-in URL security scanner that warns you about suspicious, phishing, or potentially dangerous links before you open them.
-- **Dangerous URI Blocking:** Schemes like `intent://`, `javascript:`, `file://`, and `content://` are automatically blocked when detected in scanned codes.
-- **Release Build Protection:** Sensitive debug logging is disabled in production builds.
-- **No Cloud Backup:** Prevents unintended data leakage through backup services.
+Google Play Services may independently collect diagnostic information according to Google's own Privacy Policy.
 
 ---
 
-## 9. Children's Privacy (COPPA Compliance)
+# 8. Security
 
-APS SCANNER does not collect personal information from any user, including children under 13. Because no personal data is collected, stored, or transmitted, the App is safe for users of all ages.
+APS SCANNER includes several security measures.
+
+- Android Application Sandbox
+- Local-only storage
+- Device encryption (when enabled)
+- URL Safety Checks (optional)
+- Dangerous URI blocking
+- Disabled debug logging in release builds
+- No cloud synchronization
+
+Dangerous URI schemes including:
+
+- javascript:
+- file:
+- content:
+- intent:
+
+are blocked automatically.
 
 ---
 
-## 10. Changes to This Privacy Policy
+# 9. Children's Privacy
 
-We may update this Privacy Policy when we release new app versions or to reflect changes in Google Play policies. The updated policy will be published at the URL below with a revised "Last Updated" date. Continued use of the App after changes constitutes acceptance of the updated policy.
+APS SCANNER does not knowingly collect personal information from children.
 
----
-
-## 11. Contact
-
-If you have questions or concerns about this Privacy Policy:
-
-- **Developer Email:** alibekplus@gmail.com
-- **GitHub:** [https://github.com/foxteamcode-ops/aps-scanner-privacy-Policy](https://github.com/foxteamcode-ops/aps-scanner-privacy-Policy)
+Since the App collects no personal data, it complies with children's privacy requirements, including COPPA.
 
 ---
 
-*By installing and using APS SCANNER, you acknowledge that you have read and understood this Privacy Policy.*
+# 10. Changes to This Privacy Policy
+
+This Privacy Policy may be updated when:
+
+- new application features are added;
+- Google Play requirements change;
+- legal requirements change.
+
+Updates will be published at the same URL with a revised **Last Updated** date.
+
+---
+
+# 11. Contact
+
+If you have questions about this Privacy Policy, you may contact us.
+
+**Developer Email**
+
+alibekplus@gmail.com
+
+**GitHub**
+
+https://github.com/foxteamcode-ops/aps-scanner-privacy-Policy
+
+---
+
+By installing and using APS SCANNER, you acknowledge that you have read and understood this Privacy Policy.
