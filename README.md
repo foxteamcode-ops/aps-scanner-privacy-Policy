@@ -1,8 +1,8 @@
 # Privacy Policy for APS SCANNER
 
-**Effective Date:** July 26, 2026
-**Last Updated:** July 26, 2026
-**App Version:** 1.0.0
+**Effective Date:** July 29, 2026
+**Last Updated:** July 29, 2026
+**App Version:** 1.0.3
 
 ---
 
